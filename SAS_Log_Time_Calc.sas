@@ -52,13 +52,16 @@ if index(lowcase(line),'.sas') > 0 then do;
 end;
 run;
 
+
 data read_log_10(drop=sq line);
 merge read_log_8(in=a) read_log_9(in=b);
 by sq;
 if a and b then do;
+	d1=int((intck('minute',start_tm,end_tm)/1440));
 	h1=int((mod(intck('minute',start_tm,end_tm),1440))/60);
 	m1=int(mod(intck('minute',start_tm,end_tm),60));
-	if h1 gt 0 then calc=cat(h1,' Hours & ',m1,' Minutes');
+	if d1 gt 0 then calc=cat(d1,' Days ',h1,'Hours & ',m1,' Minutes');
+	else if h1 gt 0 then calc=cat(h1,' Hours & ',m1,' Minutes');
 	else calc=cat(m1,' Minutes');
 	output;
 end;
