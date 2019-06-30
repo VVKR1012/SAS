@@ -53,13 +53,13 @@ options compress=yes linesize=MAX pagesize=MAX mprint;
 
 proc append data=sashelp.adomsg base=adomsg; run;
 
-%Getindx(sashelp.adomsg,before);
+%Getindx(work.adomsg,before);
 
 proc sql noprint;
 	create index level on adomsg(level);
 quit;
 
-%Getindx(sashelp.adomsg,after);
+%Getindx(work.adomsg,after);
 
 %Validate_index(before_index);
 %Validate_index(after_index);
