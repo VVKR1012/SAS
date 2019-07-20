@@ -1,12 +1,16 @@
+/*****************************************************************************/
+/*     Written by  : Vijaya Kumar Reddy varadabandi                          */
+/*     Date        : 20JUN2019                                               */
+/*****************************************************************************/
 /*
 This project is to prepare and analyze Transportation Security Administration (TSA) Airport Claims data from 2002 through 2017. The TSA is an agency of the United States Department of Homeland Security that has authority over the security of the traveling public. A claim is filed if you are injured or your property is lost or damaged during the screening process at an airport.
 To complete your project, you follow your supervisor's requirements, which are in Section 1.3 of this document. Here is what you need to do:
-• Prepare the data.
-• Create one PDF report that analyzes the overall data as well as the data for a dynamically specified state.
+â€¢ Prepare the data.
+â€¢ Create one PDF report that analyzes the overall data as well as the data for a dynamically specified state.
 
 The data that you use is TSAClaims2002_2017.csv, which was created from the following:
-• TSA Airport Claims data from https://www.dhs.gov/tsa-claims-data.
-• FAA Airport Facilities data from https://www.faa.gov/airports/airport_safety/airportdata_5010/.
+â€¢ TSA Airport Claims data from https://www.dhs.gov/tsa-claims-data.
+â€¢ FAA Airport Facilities data from https://www.faa.gov/airports/airport_safety/airportdata_5010/.
 */
 /*Import the raw data file TSAClaims2002_2017.csv.*/
 /* Note:- Create file_path1 macro variable with TSAClaims2002_2017.csv folder path */
@@ -22,14 +26,14 @@ proc sort data=tsa.ClaimsImport out=tsa.Claims_NoDups nodupkey;
 by _all_; 
 run;
 
-/*All missing and “-“ values in the columns Claim_Type, Claim_Site, and Disposition must be changed to Unknown.*/
+/*All missing and â€œ-â€œ values in the columns Claim_Type, Claim_Site, and Disposition must be changed to Unknown.*/
 /*Values in the columns Claim_Type, Claim_Site, and Disposition must follow the requirements in the data layout.*/
 /*All StateName values should be in proper case.*/
 /*All State values should be in uppercase.*/
 /*You create a new column named Date_Issues with a value of Needs Review to indicate that a row has a date issue. Date issues consist of the following:*/
-/*– a missing value for Incident_Date or Date_Received*/
-/*– an Incident_Date or Date_Received value out of the predefined year range of 2002 through 2017*/
-/*– an Incident_Date value that occurs after the Date_Received value*/
+/*â€“ a missing value for Incident_Date or Date_Received*/
+/*â€“ an Incident_Date or Date_Received value out of the predefined year range of 2002 through 2017*/
+/*â€“ an Incident_Date value that occurs after the Date_Received value*/
 /*Remove the County and City columns.*/
 /*Currency should be permanently formatted with a dollar sign and include two decimal points.*/
 /*All dates should be permanently formatted in the style 01JAN2000.*/
